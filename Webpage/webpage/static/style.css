@@ -1,0 +1,67 @@
+/* 전체적인 스타일 */
+body {
+    font-family: AppleGothic, sans-serif;
+    background-color: white;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #1E90FF;  /* 파란색 텍스트 */
+}
+
+/* 폼 스타일 */
+form {
+    background-color: #f0f0f0;  /* 연한 회색 */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+label, input {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* 버튼 스타일 */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1E90FF;  /* 파란색 버튼 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* 버튼 hover 스타일 */
+button:hover {
+    background-color: #4682B4;  /* 파란색 hover */
+}
+
+/* 채팅박스 스타일 */
+#chatbox {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: auto;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+/* 워드 클라우드 이미지 박스 */
+#wordcloud-box {
+    margin-top: 20px;
+}
+
+#wordcloud-image {
+    max-width: 100%;
+    height: auto;
+}

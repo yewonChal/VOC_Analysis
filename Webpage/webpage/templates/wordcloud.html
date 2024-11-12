@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워드 클라우드</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>호스트 답변 워드 클라우드</h1>
+
+    <!-- 워드 클라우드 생성 양식 -->
+    <form id="wordcloud-form">
+        <label>호스트명:</label>
+        <input type="text" id="host_name" required><br>
+        <label>숙소명:</label>
+        <input type="text" id="property_name" required><br>
+        <button type="submit">워드 클라우드 생성</button>
+    </form>
+
+    <!-- 워드 클라우드 이미지를 표시하는 div -->
+    <div id="wordcloud-box">
+        <img id="wordcloud-image" src="" alt="워드 클라우드 이미지" style="display:none;"/>
+    </div>
+
+    <!-- 워드 클라우드를 생성하는 스크립트 -->
+    <script>
+        document.getElementById('wordcloud-form').onsubmit = function(e) {
+            e.preventDefault();
+            const host_name = document.getElementById('host_name').value;
+            const property_name = document.getElementById('property_name').value;
+
+// 서버 통신
+            fetch('/generate_wordcloud', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `host_name=${host_name}&property_name=${property_name}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const wordcloudImage = document.getElementById('wordcloud-image');
+                    wordcloudImage.src = data.image_url;
+                    wordcloudImage.style.display = 'block';
+                } else {
+                    alert('워드 클라우드를 생성할 수 없습니다.');
+                }
+            });
+        };
+    </script>
+</body>
+</html>
